@@ -47,10 +47,15 @@ function shuffleDeck(deck){
 }
 
 function replacePairs(hand){
+    var p;
+    
     for(var i = 0; i < hand.length; i++) {
         for(var j = i; j < hand.length; j++) {
             if(hand[i] == hand[j] && i != j){
                 if(cards.length >= 2){
+                    p = hand[i];
+                    document.getElementById('cards').innerHTML += "replace " + p + "'s";
+                    document.getElementById('cards').innerHTML += "<br>";
                     hand[i] = cards.shift();
                     counter++;
                     hand[j] = cards.shift();
@@ -65,6 +70,8 @@ function replacePairs(hand){
             }
         }
     }
+
+    
 }
 
 function buttonPressed(){
