@@ -85,6 +85,8 @@ function replacePairs(hand){
 }
 
 function buttonPressed(){
+    //console.log(cards);
+
     if(counter == 52){
         document.getElementById('butt').disabled = true;
         document.getElementById('cards').innerHTML += "<br>";
@@ -94,7 +96,7 @@ function buttonPressed(){
 
     if(table.length >= 8 && !hasPair(table)){
         going = false;
-        console.log(table);
+        //console.log(table);
         document.getElementById('cards').innerHTML += "<br>";
         document.getElementById('cards').innerHTML += "You lose";
         document.getElementById('butt').disabled = true;
@@ -109,8 +111,8 @@ function buttonPressed(){
             document.getElementById('butt').disabled = true;
             return;
         }
-        console.log("replace pair");
-        console.log(table);
+        //console.log("replace pair");
+        //console.log(table);
         displayHand(table);
         
     }
@@ -120,11 +122,8 @@ function buttonPressed(){
         document.getElementById('rep').innerHTML = "";
         document.getElementById('rep').innerHTML = card + " drawn";
         counter++;
-        console.log(table);
         displayHand(table);
     }
-    console.log(cards);
-    console.log(counter);
 }
 
 function hasPair(hand){
