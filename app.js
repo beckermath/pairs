@@ -52,12 +52,14 @@ function replacePairs(hand){
             if(hand[i] == hand[j] && i != j){
                 if(cards.length >= 2){
                     hand[i] = cards.shift();
+                    counter++;
                     hand[j] = cards.shift();
+                    counter++;
+                    return;
                 }
                 else{
-                    document.getElementById('cards').innerHTML += "<br>";
-                    document.getElementById('cards').innerHTML += "You lose";
-                    document.getElementById('butt').disabled = true;
+                    ded= true;
+                    return;
                 }
                 
             }
@@ -66,12 +68,11 @@ function replacePairs(hand){
 }
 
 function buttonPressed(){
-    counter++;
-
     if(counter == 52){
         document.getElementById('butt').disabled = true;
         document.getElementById('cards').innerHTML += "<br>";
         document.getElementById('cards').innerHTML += "You win!";
+        return;
     }
 
     if(table.length >= 8 && !hasPair(table)){
@@ -80,9 +81,17 @@ function buttonPressed(){
         document.getElementById('cards').innerHTML += "<br>";
         document.getElementById('cards').innerHTML += "You lose";
         document.getElementById('butt').disabled = true;
+        return;
+
     }
     else if(table.length <= 8 && hasPair(table)){
         replacePairs(table);
+        if(ded){
+            document.getElementById('cards').innerHTML += "<br>";
+            document.getElementById('cards').innerHTML += "You lose";
+            document.getElementById('butt').disabled = true;
+            return;
+        }
         console.log("replace pair");
         console.log(table);
         displayHand(table);
@@ -91,9 +100,12 @@ function buttonPressed(){
     else{
         var card = cards.shift();
         table.push(card);
+        counter++;
         console.log(table);
         displayHand(table);
     }
+    console.log(cards);
+    console.log(counter);
 }
 
 function hasPair(hand){
@@ -116,6 +128,7 @@ var going = true;
 var counter = 0;
 var table = [];
 var cards = [];
+var ded = false;
 
 initializeDeck(cards);
 shuffleDeck(cards);
