@@ -9,12 +9,22 @@ function displayCards(){
 }
 
 function displayHand(cards){
+    var counter = 0;
+    document.getElementById('cards').innerHTML =  "";
+
     for(var i = 0; i < cards.length; i++){
+        counter++;
+
+        if(counter == 5){
+            document.getElementById('cards').innerHTML += "<br>";
+        }
+
         document.getElementById('cards').innerHTML += cards[i];
 
         if(i != cards.length - 1){
             document.getElementById('cards').innerHTML += ', ';
         }
+        
     }
 
     document.getElementById('cards').innerHTML += "<br>";
@@ -48,14 +58,14 @@ function shuffleDeck(deck){
 
 function replacePairs(hand){
     var p;
+    document.getElementById('rep').innerHTML = "";
     
     for(var i = 0; i < hand.length; i++) {
         for(var j = i; j < hand.length; j++) {
             if(hand[i] == hand[j] && i != j){
                 if(cards.length >= 2){
                     p = hand[i];
-                    document.getElementById('cards').innerHTML += "replace " + p + "'s";
-                    document.getElementById('cards').innerHTML += "<br>";
+                    document.getElementById('rep').innerHTML += "replace " + p + "'s";
                     hand[i] = cards.shift();
                     counter++;
                     hand[j] = cards.shift();
@@ -107,6 +117,8 @@ function buttonPressed(){
     else{
         var card = cards.shift();
         table.push(card);
+        document.getElementById('rep').innerHTML = "";
+        document.getElementById('rep').innerHTML = card + " drawn";
         counter++;
         console.log(table);
         displayHand(table);
