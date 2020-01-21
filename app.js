@@ -1,9 +1,9 @@
 function displayCards(){
     for(var i = 0; i < cards.length; i++){
-        document.getElementById('cards').innerHTML += cards[i];
+        document.getElementById('start').innerHTML += cards[i];
 
         if(i != cards.length - 1){
-            document.getElementById('cards').innerHTML += ', ';
+            document.getElementById('start').innerHTML += ', ';
         }
     }
 }
@@ -65,7 +65,7 @@ function replacePairs(hand){
             if(hand[i] == hand[j] && i != j){
                 if(cards.length >= 2){
                     p = hand[i];
-                    document.getElementById('rep').innerHTML += "replace " + p + "'s";
+                    document.getElementById('rep').innerHTML += "replaced " + p + "'s";
                     hand[i] = cards.shift();
                     counter++;
                     hand[j] = cards.shift();
@@ -150,6 +150,7 @@ var ded = false;
 
 initializeDeck(cards);
 shuffleDeck(cards);
+ 
 
 
 
