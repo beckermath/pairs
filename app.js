@@ -8,6 +8,9 @@ function displayCards(){
     }
 }
 
+function restart(){
+    location.reload();
+}
 function displayHand(cards){
     var counter = 0;
     document.getElementById('cards').innerHTML =  "";
@@ -91,6 +94,7 @@ function buttonPressed(){
         document.getElementById('butt').disabled = true;
         document.getElementById('cards').innerHTML += "<br>";
         document.getElementById('cards').innerHTML += "You win!";
+        document.getElementById('end').style.visibility = "visible";
         return;
     }
 
@@ -100,6 +104,7 @@ function buttonPressed(){
         document.getElementById('cards').innerHTML += "<br>";
         document.getElementById('cards').innerHTML += "You lose";
         document.getElementById('butt').disabled = true;
+        document.getElementById('end').innerHTML = "<button onclick = 'restart();'>restart<button>";
         return;
 
     }
